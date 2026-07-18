@@ -1,6 +1,6 @@
 SOC Phishing Investigation
 
-Investigation of a real phishing email sent to a staff member at MediSure Health Network — a healthcare provider serving 1.5M+ patients, tracing it from a spoofed Microsoft "unusual sign-in" alert through header analysis, threat intelligence corroboration, and Splunk log correlation, to a confirmed true-positive credential-harvesting attempt with three compromised accounts.
+Investigation of a real phishing email sent to a staff member at MediSure Health Network. a healthcare provider serving 1.5M+ patients, tracing it from a spoofed Microsoft "unusual sign-in" alert through header analysis, threat intelligence corroboration, and Splunk log correlation, to a confirmed true-positive credential-harvesting attempt with three compromised accounts.
 
 
 Prepared by: Adebisi Damilola
@@ -25,12 +25,12 @@ Subject: Microsoft account unusual sign-in activity
 Methodology
 
 
-Header analysis — examined the raw email source for sender authenticity, relay path, and header inconsistencies (MXToolbox)
-Indicator extraction — catalogued IPs, domains, and reply-to addresses as IOCs
-Threat intelligence corroboration — checked every IOC independently against VirusTotal, AlienVault OTX, and AbuseIPDB rather than relying on a single source
-Log correlation — searched the extracted IOCs against MediSure's proxy, firewall, and authentication logs in Splunk to confirm actual staff interaction
-Triage & classification — combined findings into a single verdict and attack classification
-Response planning — defined containment, recovery, and lessons-learned actions based on the specific accounts and infrastructure identified
+Header analysis: examined the raw email source for sender authenticity, relay path, and header inconsistencies (MXToolbox)
+Indicator extraction: catalogued IPs, domains, and reply-to addresses as IOCs
+Threat intelligence corroboration: checked every IOC independently against VirusTotal, AlienVault OTX, and AbuseIPDB rather than relying on a single source
+Log correlation: searched the extracted IOCs against MediSure's proxy, firewall, and authentication logs in Splunk to confirm actual staff interaction
+Triage & classification: combined findings into a single verdict and attack classification
+Response planning: defined containment, recovery, and lessons-learned actions based on the specific accounts and infrastructure identified
 
 
 Tools Used
@@ -39,7 +39,7 @@ ToolPurposeMXToolboxEmail header analysis; SPF, DKIM, DMARC validationVirusTotal
 
 Key Findings
 
-Sender authentication failed outright. access-accsecurity.com had no DMARC record published, and the message failed both SPF and DKIM — nothing about the sending path was authenticated. The Reply-To address routed to a personal Gmail account, not Microsoft.
+Sender authentication failed outright. access-accsecurity.com had no DMARC record published, and the message failed both SPF and DKIM, nothing about the sending path was authenticated. The Reply-To address routed to a personal Gmail account, not Microsoft.
 
 Indicators of Compromise:
 
@@ -55,7 +55,7 @@ Log correlation (Splunk, index=medisure_logs, 324 events):
 
 UserClicked link (proxy)Contacted attacker IP (firewall)Failed login, Russia (auth)alice@medisurehealthnetwork.comYesYes–bob@medisurehealthnetwork.comYes–Yescarol@medisurehealthnetwork.com–Yes (x2)–
 
-Two of three staff accounts clicked the malicious link within the same day it arrived. One follow-on login attempt from a foreign IP failed — no successful unauthorized access.
+Two of three staff accounts clicked the malicious link within the same day it arrived. One follow-on login attempt from a foreign IP failed, no successful unauthorized access.
 
 Note: firewall log entries in this dataset carry src_ip but not a user field, so Carol's exposure only surfaces by cross-referencing src_ip against proxy/auth logs manually a data quality gap worth flagging on its own.
 
@@ -81,7 +81,7 @@ Deliverables in This Repo
 
 Report/MediSure_SOC_Investigation_Report.docx - full investigation report: header analysis, threat intelligence, log correlation, triage verdict, and the complete incident response playbook
 Training-deck/MediSure_Phishing_Awareness.pptx - staff-facing awareness training built from this investigation's real findings, covering the 5 signs of phishing, the 30-second hover test, and the report → escalate workflow
-Evidence/ — supporting screenshots (MXToolbox, VirusTotal, OTX, AbuseIPDB, Splunk)
+Evidence/ - supporting screenshots (MXToolbox, VirusTotal, OTX, AbuseIPDB, Splunk)
 Queries/splunk-spl-queries.txt - reference SPL queries used for proxy, firewall, auth, and combined log correlation
 
 
