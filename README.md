@@ -1,4 +1,4 @@
-SOC Phishing Investigation
+### SOC Phishing Investigation
 
 Investigation of a real phishing email sent to a staff member at MediSure Health Network. a healthcare provider serving 1.5M+ patients, tracing it from a spoofed Microsoft "unusual sign-in" alert through header analysis, threat intelligence corroboration, and Splunk log correlation, to a confirmed true-positive credential-harvesting attempt with three compromised accounts.
 
