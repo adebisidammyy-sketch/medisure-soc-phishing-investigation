@@ -2,11 +2,11 @@
 
 Investigation of a real phishing email sent to a staff member at MediSure Health Network. a healthcare provider serving 1.5M+ patients, tracing it from a spoofed Microsoft "unusual sign-in" alert through header analysis, threat intelligence corroboration, and Splunk log correlation, to a confirmed true-positive credential-harvesting attempt with three compromised accounts.
 
-## Project Documents
+##  Project Deliverables
 
-* 📄 [SOC Investigation Report](./documents/SOC_Investigation_Report.pdf)
-* 📊 [Executive Briefing Deck](./documents/Executive_Briefing_Deck.pdf)
-* 🎓 [Phishing Awareness Training](./documents/Phishing_Awareness_Training.pdf)
+* 📄 [MediSure Phishing Report](./Medisure%20Report%20Documents/MediSure%20Phishing%20Report%20(Adebisi%20Damilola%20Abiola).pdf)
+* 📊 [MediSure Executive Briefing Slide](./Medisure%20Report%20Documents/MediSure%20Executive%20Briefing%20Slide.pdf)
+* 🎓 [MediSure Phishing Awareness Slide](./Medisure%20Report%20Documents/MediSure%20Phishing%20Awareness%20slide.pdf)
 
 Prepared by: Adebisi Damilola
 
